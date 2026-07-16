@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>حساب جديد — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <div class="auth-page">
+      <div class="auth-bg-glow glow-1"></div>
+      <div class="auth-bg-glow glow-2"></div>
+
+      <div class="auth-card">
+        <div class="auth-header">
+          <div class="logo-wrap" style="justify-content:center;margin-bottom:12px;">
+            <img src="assets/logo.svg" alt="شات كات" style="width:48px;height:48px;">
+          </div>
+          <h2 style="font-size:1.5rem;margin-bottom:4px;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">إنشاء حساب</h2>
+          <p>انضم لمجتمع شات كات 🐱</p>
+        </div>
+
+        <form id="register-form" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label" for="reg-username">اسم المستخدم</label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input class="form-input" type="text" id="reg-username" placeholder="اختر اسم مستخدم" autocomplete="off" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-age">العمر</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🎂</span>
+              <input class="form-input" type="number" id="reg-age" placeholder="عمرك" min="13" max="120" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">كلمة المرور</label>
+            <div class="input-wrapper">
+              <span class="input-icon">🔒</span>
+              <input class="form-input" type="password" id="reg-password" placeholder="اختر كلمة مرور (٦ أحرف على الأقل)" autocomplete="new-password" required minlength="6">
+              <span class="input-icon-right" id="toggle-password">👁</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">اختر صورتك الرمزية</label>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+              <div id="selected-avatar-display" style="font-size:2.5rem;width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:var(--bg-input);border:2px solid var(--accent-primary);border-radius:var(--radius-md);">🐱</div>
+              <div style="font-size:0.82rem;color:var(--text-muted);">اضغط على إيموجي لاختيار صورتك</div>
+            </div>
+            <div id="avatar-grid" class="avatar-grid"></div>
+          </div>
+
+          <div id="register-error" class="form-error" style="margin-bottom:12px;font-size:0.85rem;"></div>
+
+          <button type="submit" id="register-submit" class="btn btn-primary btn-full btn-lg">إنشاء حساب</button>
+        </form>
+
+        <div class="auth-footer">
+          لديك حساب بالفعل؟ <a href="login.html">سجّل الدخول</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (CC.Storage.get(CC.KEYS.CURRENT_USER)) CC.navigate('home.html');
+      initRegisterPage();
+    });
+  </script>
+</body>
+</html>

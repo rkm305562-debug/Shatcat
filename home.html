@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>الرئيسية — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container page page-with-nav">
+    <header class="app-header">
+      <div class="header-logo">
+        <img src="assets/logo.svg" alt="شات كات">
+        <span>شات كات</span>
+      </div>
+      <div class="header-actions">
+        <div class="online-counter"><span id="online-count">0</span> متصل</div>
+        <button class="btn-icon notif-btn" title="الإشعارات" onclick="CC.showToast('لا توجد إشعارات جديدة','info')">🔔</button>
+      </div>
+    </header>
+
+    <main id="home-content" style="flex:1;overflow-y:auto;">
+      <div class="home-hero">
+        <div class="greeting-card">
+          <h2 id="greeting-text">مرحباً! 👋</h2>
+          <p id="greeting-user">جارٍ التحميل…</p>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+            <span id="home-user-badge" class="badge badge-primary" style="background:rgba(255,255,255,0.15);color:#fff;border-color:rgba(255,255,255,0.3);">🐱 مستخدم</span>
+            <span id="home-join-badge" class="badge" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.2);font-size:0.68rem;"></span>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon cyan">💬</div>
+            <div class="stat-info"><h3 id="stat-messages">0</h3><p>الرسائل</p></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">👥</div>
+            <div class="stat-info"><h3 id="stat-members">0</h3><p>الأعضاء</p></div>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-icon pink">❤️</div>
+            <div class="stat-info"><h3 id="stat-followers">0</h3><p>المتابعون</p></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">🟢</div>
+            <div class="stat-info"><h3 id="stat-online">0</h3><p>متصل الآن</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <a href="chat.html" class="quick-btn">
+          <div class="qb-icon" style="background:rgba(139,92,246,0.15);">💬</div>
+          <div class="qb-info"><h4>الدردشة العامة</h4><p>انضم للغرفة</p></div>
+        </a>
+        <a href="members.html" class="quick-btn">
+          <div class="qb-icon" style="background:rgba(6,182,212,0.15);">👥</div>
+          <div class="qb-info"><h4>الأعضاء</h4><p>ابحث عن أصدقاء</p></div>
+        </a>
+        <a href="friends.html" class="quick-btn">
+          <div class="qb-icon" style="background:rgba(236,72,153,0.15);">💝</div>
+          <div class="qb-info"><h4>الأصدقاء</h4><p>أضف أصدقاء</p></div>
+        </a>
+        <a href="profile.html" class="quick-btn">
+          <div class="qb-icon" style="background:rgba(16,185,129,0.15);">✨</div>
+          <div class="qb-info"><h4>الملف الشخصي</h4><p>تعديل الملف</p></div>
+        </a>
+      </div>
+
+      <div style="padding:0 16px 8px;">
+        <div class="section-title">أحدث الرسائل</div>
+        <div id="recent-messages" class="glass-card" style="overflow:hidden;"></div>
+      </div>
+
+      <div id="admin-shortcut" style="padding:0 16px 16px;display:none;">
+        <a href="admin.html" class="quick-btn" style="width:100%;background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.2);">
+          <div class="qb-icon" style="background:rgba(139,92,246,0.15);">⚡</div>
+          <div class="qb-info"><h4 style="color:var(--accent-primary);">لوحة الإدارة</h4><p>إدارة شات كات</p></div>
+        </a>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="home.html" class="nav-item active"><span class="nav-icon">🏠</span><span class="nav-label">الرئيسية</span></a>
+      <a href="chat.html" class="nav-item"><span class="nav-icon">💬</span><span class="nav-label">دردشة</span></a>
+      <a href="members.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">الأعضاء</span></a>
+      <a href="friends.html" class="nav-item"><span class="nav-icon">💝</span><span class="nav-label">أصدقاء</span></a>
+      <a href="profile.html" class="nav-item"><span class="nav-icon">👤</span><span class="nav-label">ملفي</span></a>
+    </nav>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const user = CC.requireAuth();
+      if (!user) return;
+
+      const hour = new Date().getHours();
+      const greet = hour < 12 ? 'صباح الخير' : hour < 18 ? 'مساء الخير' : 'مساء الخير';
+      CC.$('#greeting-text').textContent = `${greet}، ${user.username}! 👋`;
+      CC.$('#greeting-user').textContent = user.bio || 'مرحباً بك في شات كات 🐱';
+      CC.$('#home-user-badge').textContent = `${user.avatar} ${user.username}`;
+      CC.$('#home-join-badge').textContent = `انضم في ${CC.formatDate(user.joinDate)}`;
+
+      const allUsers = Auth.getAllUsers();
+      const messages = CC.Storage.get(CC.KEYS.MESSAGES, []).filter(m => !m.isDeleted);
+      CC.$('#stat-messages').textContent = messages.filter(m => m.userId === user.id).length;
+      CC.$('#stat-members').textContent  = allUsers.length;
+      CC.$('#stat-followers').textContent = (user.followers || []).length;
+      CC.$('#online-count').textContent  = CC.getOnlineCount();
+
+      function refreshStats() {
+        CC.$('#stat-online').textContent  = CC.getOnlineCount();
+        CC.$('#online-count').textContent = CC.getOnlineCount();
+      }
+      refreshStats();
+      setInterval(refreshStats, 10000);
+
+      if (user.isAdmin) CC.$('#admin-shortcut').style.display = 'block';
+
+      const recentContainer = CC.$('#recent-messages');
+      const recentMsgs = [...messages].sort((a,b) => b.timestamp - a.timestamp).slice(0, 4);
+
+      if (recentMsgs.length === 0) {
+        recentContainer.innerHTML = `<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:0.85rem;">لا توجد رسائل بعد. <a href="chat.html">ابدأ الدردشة!</a></div>`;
+      } else {
+        recentMsgs.forEach(msg => {
+          const sender = Auth.getUser(msg.userId);
+          const item = document.createElement('a');
+          item.href = 'chat.html';
+          item.style.cssText = 'display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border-color);text-decoration:none;color:var(--text-primary);transition:background var(--transition-fast);';
+          item.addEventListener('mouseenter', () => item.style.background = 'var(--bg-card-hover)');
+          item.addEventListener('mouseleave', () => item.style.background = '');
+          item.innerHTML = `
+            <div class="avatar avatar-sm" style="flex-shrink:0;">${sender?.avatar || '👤'}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:0.82rem;font-weight:600;">${sender?.username || 'محذوف'}</div>
+              <div style="font-size:0.78rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${msg.text.slice(0,60)}</div>
+            </div>
+            <div style="font-size:0.68rem;color:var(--text-muted);flex-shrink:0;">${CC.formatTime(msg.timestamp)}</div>`;
+          recentContainer.appendChild(item);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

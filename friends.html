@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>الأصدقاء — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container page page-with-nav" id="friends-page">
+    <header class="app-header">
+      <h2 style="font-size:1.15rem;font-weight:700;">اكتشف الأصدقاء</h2>
+      <div class="header-actions">
+        <span style="font-size:0.82rem;color:var(--text-muted);">اسحب للتواصل</span>
+      </div>
+    </header>
+
+    <div style="padding:16px 20px 4px;text-align:center;">
+      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.5;">
+        اضغط <span style="color:var(--accent-primary);font-weight:600;">✓ إضافة</span> لتصبح أصدقاء، أو
+        <span style="color:var(--text-secondary);font-weight:600;">✕ تخطي</span> للمرور
+      </p>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 16px;">
+      <div id="friends-stack" class="friends-stack"></div>
+    </div>
+
+    <nav class="bottom-nav">
+      <a href="home.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">الرئيسية</span></a>
+      <a href="chat.html" class="nav-item"><span class="nav-icon">💬</span><span class="nav-label">دردشة</span></a>
+      <a href="members.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">الأعضاء</span></a>
+      <a href="friends.html" class="nav-item active"><span class="nav-icon">💝</span><span class="nav-label">أصدقاء</span></a>
+      <a href="profile.html" class="nav-item"><span class="nav-icon">👤</span><span class="nav-label">ملفي</span></a>
+    </nav>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/friends.js"></script>
+</body>
+</html>

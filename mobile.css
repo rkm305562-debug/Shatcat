@@ -1,0 +1,104 @@
+/* ================================================
+   ChatCat — Mobile Overrides
+   ================================================ */
+
+@media (max-width: 360px) {
+  :root { --avatar-xl: 80px; }
+  .auth-card { padding: 24px 20px; }
+  .auth-header h1 { font-size: 1.5rem; }
+  .greeting-card h2 { font-size: 1.15rem; }
+  .avatar-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .avatar-option { font-size: 1.5rem; }
+  .friend-card { padding: 22px 18px; }
+  .fc-action-btn { width: 50px; height: 50px; font-size: 1.3rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+  .bottom-nav { left: 0; transform: none; }
+  .toast { font-size: 0.82rem; }
+  .friends-stack { height: 400px; }
+  .friend-card { width: calc(100% - 32px); }
+  .profile-stats { gap: 20px; }
+  .member-item { padding: 10px 14px; }
+  .admin-stat-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .admin-stat-card .asn { font-size: 1.5rem; }
+  .chat-input-area { padding: 10px 10px calc(var(--nav-height) + 10px); }
+  .send-btn { width: 40px; height: 40px; }
+  .quick-actions { grid-template-columns: 1fr 1fr; }
+  .quick-btn .qb-icon { width: 36px; height: 36px; font-size: 1.1rem; }
+  .quick-btn .qb-info h4 { font-size: 0.82rem; }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  :root { --max-width: 520px; }
+  .avatar-grid { grid-template-columns: repeat(6, 1fr); }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .quick-actions { grid-template-columns: 1fr 1fr 1fr 1fr; }
+}
+
+@media (min-width: 769px) {
+  :root { --max-width: 480px; }
+  body { background: #080a14; }
+  .app-container { box-shadow: 0 0 60px rgba(0,0,0,0.8); min-height: 100vh; }
+  .auth-page { background: #080a14; }
+  .friend-card { max-width: 360px; }
+  .bottom-nav { max-width: var(--max-width); }
+}
+
+@media (hover: none) {
+  .message-actions { opacity: 1; }
+  .msg-action-btn { padding: 5px 10px; }
+  .fc-action-btn { width: 60px; height: 60px; }
+  .nav-item { padding: 10px 4px; }
+  .btn-primary:hover { transform: none; }
+  .quick-btn:hover { transform: none; }
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .bottom-nav { padding-bottom: env(safe-area-inset-bottom); height: calc(var(--nav-height) + env(safe-area-inset-bottom)); }
+  .chat-input-area { padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 12px); }
+  .page-with-nav { padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom) + 16px); }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .splash-logo svg, .splash-logo img { width: 70px; height: 70px; }
+  .splash-title { font-size: 1.8rem; }
+  .auth-card { padding: 16px; }
+  .auth-header { margin-bottom: 16px; }
+  .auth-header .logo-wrap svg, .auth-header .logo-wrap img { width: 40px; height: 40px; }
+  .friends-stack { height: 320px; }
+  .friend-card { padding: 16px; gap: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+[dir="rtl"] { text-align: right; }
+[dir="rtl"] .message-item:not(.own) { flex-direction: row-reverse; }
+[dir="rtl"] .message-item.own { flex-direction: row; }
+[dir="rtl"] .message-item:not(.own) .message-bubble { border-bottom-left-radius: 18px; border-bottom-right-radius: 4px; }
+[dir="rtl"] .message-item.own .message-bubble { border-bottom-right-radius: 18px; border-bottom-left-radius: 4px; }
+[dir="rtl"] .reply-quote { border-left: none; border-right: 3px solid var(--accent-primary); border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+[dir="rtl"] .input-wrapper .input-icon { left: auto; right: 14px; }
+[dir="rtl"] .input-wrapper .form-input { padding-left: 16px; padding-right: 42px; }
+[dir="rtl"] .input-wrapper .input-icon-right { right: auto; left: 14px; }
+[dir="rtl"] .nav-item.active::before { left: 50%; right: auto; }
+[dir="rtl"] .bottom-nav { direction: rtl; }
+[dir="rtl"] .message-header { flex-direction: row-reverse; }
+[dir="rtl"] .own .message-header { flex-direction: row; }
+[dir="rtl"] .own .message-content-wrap { align-items: flex-start; }
+[dir="rtl"] .message-item:not(.own) .message-actions { justify-content: flex-end; }
+[dir="rtl"] .message-item.own .message-actions { justify-content: flex-start; }
+[dir="rtl"] .auth-footer { direction: rtl; }
+[dir="rtl"] .form-label { direction: rtl; }
+[dir="rtl"] .form-input { direction: rtl; text-align: right; }
+[dir="rtl"] .profile-info-item { flex-direction: row-reverse; }
+[dir="rtl"] .member-item { flex-direction: row-reverse; }
+[dir="rtl"] .settings-item { flex-direction: row-reverse; }
+[dir="rtl"] .settings-item-left { flex-direction: row-reverse; }
+[dir="rtl"] .user-manage-item { flex-direction: row-reverse; }
+[dir="rtl"] .user-manage-actions { margin-left: 0; margin-right: auto; }
+html[lang="ar"] body, [dir="rtl"] { font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif; line-height: 1.8; }

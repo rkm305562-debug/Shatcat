@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>الأعضاء — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container page page-with-nav" id="members-page">
+    <header class="app-header">
+      <h2 style="font-size:1.15rem;font-weight:700;">الأعضاء</h2>
+      <div class="header-actions">
+        <div class="online-counter"><span id="online-count">0</span> متصل</div>
+      </div>
+    </header>
+
+    <div class="sticky-search">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="members-search" placeholder="ابحث عن أعضاء…">
+      </div>
+    </div>
+
+    <main style="flex:1;overflow-y:auto;">
+      <div id="members-list" class="members-list">
+        <div class="empty-state">
+          <div class="spinner" style="margin:0 auto;"></div>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="home.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">الرئيسية</span></a>
+      <a href="chat.html" class="nav-item"><span class="nav-icon">💬</span><span class="nav-label">دردشة</span></a>
+      <a href="members.html" class="nav-item active"><span class="nav-icon">👥</span><span class="nav-label">الأعضاء</span></a>
+      <a href="friends.html" class="nav-item"><span class="nav-icon">💝</span><span class="nav-label">أصدقاء</span></a>
+      <a href="profile.html" class="nav-item"><span class="nav-icon">👤</span><span class="nav-label">ملفي</span></a>
+    </nav>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/members.js"></script>
+</body>
+</html>

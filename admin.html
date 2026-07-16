@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>لوحة الإدارة — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container page" id="admin-page" style="min-height:100vh;overflow-y:auto;">
+    <header class="app-header">
+      <a href="home.html" class="btn-icon" style="color:var(--text-muted);text-decoration:none;font-size:1.3rem;">→</a>
+      <div style="flex:1;display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.3rem;">⚡</span>
+        <div>
+          <h2 style="font-size:1rem;font-weight:700;line-height:1.2;">لوحة الإدارة</h2>
+          <p style="font-size:0.72rem;color:var(--text-muted);">مركز تحكم شات كات</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="badge badge-warning">⭐ مدير</span>
+      </div>
+    </header>
+
+    <div style="padding:12px 16px 8px;">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="admin-search" placeholder="ابحث عن مستخدمين أو رسائل…">
+      </div>
+    </div>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="stats">📊 الإحصائيات</button>
+      <button class="admin-tab" data-tab="users">👥 المستخدمون</button>
+      <button class="admin-tab" data-tab="messages">💬 الرسائل</button>
+    </div>
+
+    <div id="stats-panel" class="admin-panel active">
+      <div class="section-title" style="margin-bottom:12px;">نظرة عامة</div>
+      <div class="admin-stat-grid">
+        <div class="admin-stat-card"><div class="asn" id="stat-total-users">0</div><div class="asl">إجمالي المستخدمين</div></div>
+        <div class="admin-stat-card"><div class="asn" id="stat-online-users" style="color:var(--accent-green);">0</div><div class="asl">متصل الآن</div></div>
+        <div class="admin-stat-card"><div class="asn" id="stat-total-messages">0</div><div class="asl">إجمالي الرسائل</div></div>
+        <div class="admin-stat-card"><div class="asn" id="stat-deleted-msgs" style="color:var(--text-muted);">0</div><div class="asl">الرسائل المحذوفة</div></div>
+        <div class="admin-stat-card"><div class="asn" id="stat-banned-users" style="color:var(--accent-red);">0</div><div class="asl">المستخدمون المحظورون</div></div>
+        <div class="admin-stat-card"><div class="asn" id="stat-muted-users" style="color:var(--accent-orange);">0</div><div class="asl">المستخدمون المكتومون</div></div>
+      </div>
+
+      <div class="section-title" style="margin:16px 0 8px;">النظام</div>
+      <div class="glass-card" style="padding:16px;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+          <span style="color:var(--text-muted);">المساحة المستخدمة</span>
+          <span id="storage-size" class="badge badge-primary">جارٍ الحساب…</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+          <span style="color:var(--text-muted);">الإصدار</span>
+          <span class="badge badge-success">v1.0.0</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.88rem;">
+          <span style="color:var(--text-muted);">التخزين</span>
+          <span class="badge badge-muted">localStorage</span>
+        </div>
+      </div>
+
+      <div class="section-title" style="margin:16px 0 8px;color:var(--accent-red);">⚠ منطقة الخطر</div>
+      <div class="glass-card" style="padding:16px;border-color:rgba(239,68,68,0.2);">
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">هذه الإجراءات لا يمكن التراجع عنها. استخدمها بحذر شديد.</p>
+        <button class="btn btn-danger btn-full" id="clear-messages-btn">🗑 حذف جميع الرسائل</button>
+      </div>
+      <div style="height:24px;"></div>
+    </div>
+
+    <div id="users-panel" class="admin-panel">
+      <div class="section-title" style="margin-bottom:12px;">إدارة المستخدمين</div>
+      <div id="users-list"></div>
+    </div>
+
+    <div id="messages-panel" class="admin-panel">
+      <div class="section-title" style="margin-bottom:12px;">أحدث الرسائل</div>
+      <div id="messages-list"></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const calcStorage = () => {
+        let total = 0;
+        for (const key of Object.keys(localStorage)) total += (localStorage.getItem(key) || '').length * 2;
+        const kb = (total / 1024).toFixed(1);
+        const el = CC.$('#storage-size'); if (el) el.textContent = `${kb} ك.ب`;
+      };
+      calcStorage();
+
+      CC.$('#clear-messages-btn')?.addEventListener('click', () => {
+        if (confirm('حذف جميع الرسائل؟ لا يمكن التراجع عن هذا.')) {
+          CC.Storage.set(CC.KEYS.MESSAGES, []);
+          CC.showToast('تم حذف جميع الرسائل', 'success');
+          Admin.renderMessages(); Admin.renderStats(); calcStorage();
+        }
+      });
+
+      setInterval(() => Admin.renderStats(), 10000);
+    });
+  </script>
+</body>
+</html>

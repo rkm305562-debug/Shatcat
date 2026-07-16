@@ -1,0 +1,62 @@
+/* ================================================
+   ChatCat — Light Mode Override
+   ================================================ */
+
+body.light-mode {
+  --bg-primary:    #f0f2f7;
+  --bg-secondary:  #ffffff;
+  --bg-tertiary:   #eef0f6;
+  --bg-card:       rgba(255,255,255,0.9);
+  --bg-card-hover: rgba(255,255,255,1);
+  --bg-input:      #f5f6fa;
+  --bg-overlay:    rgba(0,0,0,0.4);
+  --text-primary:   #1a1d2e;
+  --text-secondary: #4b5563;
+  --text-muted:     #9ca3af;
+  --border-color:  rgba(0,0,0,0.08);
+  --border-focus:  rgba(139,92,246,0.5);
+  --glass-bg:     rgba(255,255,255,0.7);
+  --glass-border: rgba(0,0,0,0.06);
+  --glass-blur:   20px;
+  --shadow-sm:  0 1px 4px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
+  --shadow-glow: 0 0 24px rgba(139,92,246,0.2);
+  --gradient-splash: linear-gradient(135deg, #f0f2f7 0%, #e8e9ff 50%, #f0f2f7 100%);
+  --gradient-sidebar: linear-gradient(180deg, #ffffff 0%, #f0f2f7 100%);
+}
+
+body.light-mode .app-header { background: rgba(240,242,247,0.85); border-bottom-color: rgba(0,0,0,0.06); }
+body.light-mode .bottom-nav { background: rgba(255,255,255,0.92); border-top-color: rgba(0,0,0,0.08); }
+body.light-mode .chat-header { background: rgba(255,255,255,0.9); border-bottom-color: rgba(0,0,0,0.06); }
+body.light-mode .chat-input-area { background: rgba(240,242,247,0.92); border-top-color: rgba(0,0,0,0.06); }
+body.light-mode .chat-input-box { background: #f5f6fa; border-color: rgba(0,0,0,0.1); }
+body.light-mode .message-item:not(.own) .message-bubble { background: #ffffff; border-color: rgba(0,0,0,0.08); color: #1a1d2e; }
+body.light-mode .message-item.own .message-bubble { background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.1)); border-color: rgba(139,92,246,0.2); color: #1a1d2e; }
+body.light-mode .msg-action-btn { background: #f5f6fa; border-color: rgba(0,0,0,0.1); }
+body.light-mode .msg-action-btn:hover { background: #ede9fe; }
+body.light-mode .toast { background: #ffffff; border-color: rgba(0,0,0,0.1); color: #1a1d2e; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+body.light-mode .modal { background: #ffffff; }
+body.light-mode .context-menu { background: #ffffff; border-color: rgba(0,0,0,0.1); }
+body.light-mode .context-menu-item:hover { background: #f5f6fa; }
+body.light-mode .emoji-picker { background: #ffffff; border-color: rgba(0,0,0,0.1); }
+body.light-mode .date-separator span { background: #f0f2f7; border-color: rgba(0,0,0,0.08); }
+body.light-mode .reply-quote { background: rgba(139,92,246,0.05); }
+body.light-mode .member-item:hover { background: rgba(139,92,246,0.04); }
+body.light-mode .settings-item:hover { background: rgba(0,0,0,0.02); }
+body.light-mode .friend-card { background: #ffffff; border-color: rgba(0,0,0,0.08); }
+body.light-mode .typing-indicator { color: var(--text-muted); }
+body.light-mode .auth-card { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+body.light-mode .auth-bg-glow { opacity: 0.08; }
+body.light-mode .badge-muted { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.1); }
+body.light-mode .profile-info-item { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
+body.light-mode .sticky-search { background: rgba(240,242,247,0.9); border-bottom-color: rgba(0,0,0,0.06); }
+body.light-mode .admin-stat-card { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
+body.light-mode .user-manage-item { background: rgba(255,255,255,0.9); border-color: rgba(0,0,0,0.08); }
+body.light-mode .admin-tab { background: #f5f6fa; color: var(--text-secondary); border-color: rgba(0,0,0,0.08); }
+body.light-mode .admin-tab.active { color: #fff; }
+body.light-mode ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); }
+body.light-mode .greeting-card { box-shadow: 0 8px 32px rgba(139,92,246,0.25); }
+body.light-mode .nav-item { color: var(--text-muted); }
+body.light-mode .nav-item.active { color: var(--accent-primary); }
+body.light-mode .header-logo { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }

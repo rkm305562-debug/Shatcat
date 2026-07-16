@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>الدردشة — شات كات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body, .app-container { height: 100vh; overflow: hidden; }
+    .chat-layout { display: flex; flex-direction: column; height: 100vh; }
+    #chat-messages { flex: 1; overflow-y: auto; padding: 12px 16px 8px; }
+    .chat-input-area { flex-shrink: 0; position: relative; }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="chat-layout" id="chat-page">
+      <div class="chat-header">
+        <a href="home.html" style="color:var(--text-muted);font-size:1.3rem;text-decoration:none;padding:4px;" title="رجوع">→</a>
+        <div class="avatar avatar-md" style="background:var(--gradient-primary);">🐱</div>
+        <div class="chat-info" style="flex:1;">
+          <h3>الدردشة العامة</h3>
+          <p id="chat-subtext">جارٍ التحميل…</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn-icon" id="toggle-search-btn" title="البحث في الرسائل">🔍</button>
+          <div class="online-counter"><span id="online-count">0</span></div>
+        </div>
+      </div>
+
+      <div id="search-bar-container" style="display:none;padding:8px 12px;background:var(--bg-secondary);border-bottom:1px solid var(--border-color);">
+        <div class="search-bar">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="chat-search" placeholder="ابحث في الرسائل…">
+          <span style="cursor:pointer;color:var(--text-muted);padding:2px 6px;" id="clear-search">✕</span>
+        </div>
+      </div>
+
+      <div id="status-banner" style="display:none;" class="status-banner muted">🔇 أنت مكتوم حالياً.</div>
+
+      <div id="chat-messages"></div>
+
+      <div id="typing-indicator" class="typing-indicator"></div>
+
+      <div id="reply-banner" class="reply-banner">
+        <div id="reply-banner-info" class="reply-banner-info">الرد على…</div>
+        <button id="cancel-reply" style="color:var(--text-muted);background:none;border:none;cursor:pointer;font-size:1.1rem;padding:2px 6px;">✕</button>
+      </div>
+
+      <div class="chat-input-area" id="chat-input-area" style="position:relative;">
+        <div id="emoji-picker" class="emoji-picker"></div>
+        <div class="chat-input-row">
+          <div class="chat-input-box">
+            <span class="emoji-btn" id="emoji-btn" title="إيموجي">😊</span>
+            <input type="text" id="chat-input" placeholder="اكتب رسالة…" autocomplete="off" maxlength="1000">
+          </div>
+          <button class="send-btn" id="send-btn" title="إرسال">➤</button>
+        </div>
+      </div>
+
+      <nav class="bottom-nav">
+        <a href="home.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">الرئيسية</span></a>
+        <a href="chat.html" class="nav-item active"><span class="nav-icon">💬</span><span class="nav-label">دردشة</span></a>
+        <a href="members.html" class="nav-item"><span class="nav-icon">👥</span><span class="nav-label">الأعضاء</span></a>
+        <a href="friends.html" class="nav-item"><span class="nav-icon">💝</span><span class="nav-label">أصدقاء</span></a>
+        <a href="profile.html" class="nav-item"><span class="nav-icon">👤</span><span class="nav-label">ملفي</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/chat.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const updateSubtext = () => {
+        const count = CC.getOnlineCount();
+        const sub = CC.$('#chat-subtext');
+        if (sub) sub.textContent = `${count} متصل • غرفة عامة`;
+        const oc = CC.$('#online-count');
+        if (oc) oc.textContent = count;
+      };
+      updateSubtext();
+      setInterval(updateSubtext, 5000);
+
+      const searchBtn = CC.$('#toggle-search-btn');
+      const searchBar = CC.$('#search-bar-container');
+      const clearSearch = CC.$('#clear-search');
+
+      searchBtn?.addEventListener('click', () => {
+        const visible = searchBar.style.display !== 'none';
+        searchBar.style.display = visible ? 'none' : 'block';
+        if (!visible) CC.$('#chat-search')?.focus();
+      });
+
+      clearSearch?.addEventListener('click', () => {
+        const s = CC.$('#chat-search'); if (s) s.value = '';
+        Chat.searchQuery = '';
+        Chat.renderMessages();
+      });
+    });
+  </script>
+</body>
+</html>

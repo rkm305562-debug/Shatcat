@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <radialGradient id="catGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#7c3aed" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c4b5fd"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="chatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#7c3aed" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <circle cx="60" cy="60" r="55" fill="url(#catGlow)"/>
+  <circle cx="60" cy="60" r="50" fill="#1e1b4b" opacity="0.9"/>
+  <path d="M22 42 L30 22 L42 38 Z" fill="url(#bodyGrad)" filter="url(#shadow)"/>
+  <path d="M25 40 L31 25 L40 37 Z" fill="#a78bfa"/>
+  <path d="M98 42 L90 22 L78 38 Z" fill="url(#bodyGrad)" filter="url(#shadow)"/>
+  <path d="M95 40 L89 25 L80 37 Z" fill="#a78bfa"/>
+  <ellipse cx="60" cy="62" rx="36" ry="32" fill="url(#bodyGrad)" filter="url(#shadow)"/>
+  <ellipse cx="60" cy="62" rx="32" ry="28" fill="url(#faceGrad)"/>
+  <ellipse cx="48" cy="58" rx="6" ry="7" fill="#1e1b4b"/>
+  <ellipse cx="72" cy="58" rx="6" ry="7" fill="#1e1b4b"/>
+  <circle cx="50" cy="56" r="2" fill="white"/>
+  <circle cx="74" cy="56" r="2" fill="white"/>
+  <ellipse cx="48" cy="59" rx="3" ry="4" fill="#7c3aed" opacity="0.6"/>
+  <ellipse cx="72" cy="59" rx="3" ry="4" fill="#7c3aed" opacity="0.6"/>
+  <path d="M57 67 L60 70 L63 67 Q60 65 57 67 Z" fill="#f9a8d4"/>
+  <path d="M55 71 Q60 75 65 71" stroke="#c4b5fd" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <line x1="20" y1="64" x2="50" y2="67" stroke="#c4b5fd" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+  <line x1="20" y1="70" x2="50" y2="70" stroke="#c4b5fd" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+  <line x1="100" y1="64" x2="70" y2="67" stroke="#c4b5fd" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+  <line x1="100" y1="70" x2="70" y2="70" stroke="#c4b5fd" stroke-width="1.2" opacity="0.7" stroke-linecap="round"/>
+  <rect x="72" y="78" width="26" height="18" rx="9" fill="url(#chatGrad)" filter="url(#shadow)"/>
+  <path d="M72 90 L65 95 L76 90 Z" fill="url(#chatGrad)"/>
+  <circle cx="80" cy="87" r="2" fill="white"/>
+  <circle cx="86" cy="87" r="2" fill="white"/>
+  <circle cx="92" cy="87" r="2" fill="white"/>
+</svg>
