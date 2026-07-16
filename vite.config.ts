@@ -26,6 +26,7 @@ function copyStaticAssets() {
 // The React template (src/main.tsx) is kept for the design system but
 // is NOT the default entry — index.html belongs to ChatCat.
 export default defineConfig({
+  base: "/Shatcat/", // <-- هذا السطر يضمن توجيه مسارات الصفحات والملفات بشكل سليم على GitHub Pages
   plugins: [
     react({ include: ["src/**/*.tsx", "src/**/*.ts"] }),
     tailwindcss(),
